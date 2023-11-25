@@ -1,0 +1,156 @@
+{
+  "seller": [
+    {
+      "name": "Nahin Sadat",
+      "email": "nahin@gmail.com",
+      "password": "abc@123",
+      "id": 3
+    },
+    {
+      "name": "Nihad",
+      "email": "nihad@gmail.com",
+      "password": "abc@123",
+      "id": 4
+    },
+    {
+      "name": "",
+      "password": "",
+      "id": 5
+    },
+    {
+      "name": "kotha",
+      "email": "kotha@gmail.com",
+      "password": "abc@123",
+      "id": 6
+    },
+    {
+      "name": "nihad.exe@gmail.com",
+      "password": "abc@123",
+      "id": 7
+    },
+    {
+      "name": "nihad.exe@gmail.com",
+      "password": "abc@123",
+      "id": 8
+    },
+    {
+      "name": "haha@gmail.com",
+      "password": "abc@123",
+      "id": 9
+    },
+    {
+      "name": "Md. Nihad",
+      "email": "nihad.exe@gmail.com",
+      "password": "123456",
+      "id": 10
+    },
+    {
+      "name": "Mahadi Hasan",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 11
+    },
+    {
+      "name": "Tamim",
+      "email": "tamim.flutter@gmail.com",
+      "password": "123456",
+      "id": 12
+    },
+    {
+      "name": "Tamim",
+      "email": "tamim.flutter@gmail.com",
+      "password": "123456",
+      "id": 13
+    },
+    {
+      "name": "Tamim",
+      "email": "tamim.flutter@gmail.com",
+      "password": "123456",
+      "id": 14
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "id": 15
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 16
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 17
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 18
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 19
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 20
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 21
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 22
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 23
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 24
+    },
+    {
+      "name": "Tamim",
+      "email": "mahadi.flutter@gmail.com",
+      "password": "123456",
+      "id": 25
+    },
+    {
+      "name": "Tamim",
+      "email": "tamim.flutter@gmail.com",
+      "password": "123456",
+      "id": 26
+    },
+    {
+      "name": "Tamim",
+      "email": "tamim.flutter@gmail.com",
+      "password": "123456",
+      "id": 27
+    },
+    {
+      "name": "Tamim",
+      "email": "tamim.flutter@gmail.com",
+      "password": "12345678",
+      "id": 28
+    }
+  ]
+}
