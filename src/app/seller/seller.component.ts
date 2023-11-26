@@ -10,13 +10,28 @@ import { SignUp } from '../data-type';
 })
 export class SellerComponent implements OnInit {
   constructor (private seller:SellerService, private router: Router) {}
+  showLogin=false
   ngOnInit(): void {}
   signUp(data:SignUp):void {
+    console.warn(data);
     
-  this.seller.userSignUp(data)
+  this.seller.userSignUp(data);
     
 
   }
+  login(data:SignUp):void {
+    console.warn(data);
+  }
 
+  openLogin() {
+this.showLogin=true
 
+  }
+
+  openSignUp()
+  {
+    this.showLogin=false
+  }
 }
+
+
