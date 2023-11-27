@@ -7,8 +7,8 @@ export interface SignUp {
 
 export interface login {
 
-    name:string,
+    
     email:string,
-    password: string
+    password:string
 
 }
