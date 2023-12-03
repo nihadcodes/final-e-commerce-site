@@ -1,0 +1,6 @@
+# admin can only add or delete the product from product list:
+
+
+
+user email : nihad@gmail.com
+user password: admin
