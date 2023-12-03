@@ -1,7 +1,7 @@
 <div class="navbar primary-content shadow">
   <div class="flex-1">
     <div class="navbar-start">
-      <a class="text-xl">E-SHOP</a>
+      <a routerLink="/">E-SHOP</a>
     </div>
 
     <div class="navbar-center hidden lg:flex">
@@ -9,7 +9,7 @@
         <li><a routerLink="/">Home</a></li>
         <li><a routerLink="/dashboard">Dashboard</a></li>
         <li><a routerLink="/products">Products</a></li>
-        <li><a routerLink="/cart">My Cart</a></li>
+        <li><a routerLink="/cart">Cart</a></li>
        
         <li *ngIf="!isLoggedIn"><a routerLink="/signup">Signup</a></li>
         <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
@@ -33,7 +33,7 @@
       <div class="card-body">
         <span class="font-bold text-lg">{{ totalQuantity }} Items</span>
         <div class="card-actions">
-          <button class="btn btn-primary btn-block">View cart</button>
+          <button class="btn btn-primary btn-block" style="color: white; background-color: black;"><a routerLink="/cart">view cart</a></button>
         </div>
       </div>
     </div>

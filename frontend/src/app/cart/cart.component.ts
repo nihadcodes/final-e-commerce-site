@@ -8,7 +8,6 @@ import { CartService } from '../cart.service';
 })
 export class CartComponent implements OnInit {
   cart: any[] = [];
- 
 
   constructor(private cartService: CartService) {}
 
@@ -33,30 +32,19 @@ export class CartComponent implements OnInit {
 
   }
 
-  removeFromCart(product: any): void {
-    this.cartService.removeFromCart(product.product._id);
-
-  }
 
   removeOneItem(cartItem: any): void {
     this.cartService.removeOneItem(cartItem.product._id);
 
   }
 
-  changeQuantity(product: any, action: 'increase' | 'decrease'): void {
-    const currentQuantity = product.quantity;
-
-    if (action === 'increase') {
-      this.addToCart(product);
-    } else if (action === 'decrease' && currentQuantity > 1) {
-      this.removeFromCart(product);
-    }
-  }
-
   getTotalQuantity(): number {
     return this.cartService.getTotalQuantity();
   }
+  getTotalPrice(): number {
+    return this.cartService.getTotalPrice();
+  }
 
+ 
   
-
 }

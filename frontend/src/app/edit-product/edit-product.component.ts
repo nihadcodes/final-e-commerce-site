@@ -13,7 +13,7 @@ export class EditProductComponent implements OnInit {
   productId!: string; 
 
   origins: string[] = ['Local', 'Imported'];
-  categories: string[] = ['Mobile', 'Food', 'Cloths'];
+  categories: string[] = ['Mobile', 'Laptop', 'Desktop'];
 
   constructor(
     private formBuilder: FormBuilder,

@@ -23,6 +23,6 @@ router.post('/update/:id', productController.updateProduct);
 router.get('/getQuantity/:id', productController.getProductQuantity);
 router.put('/updateProductQuantity/:id', productController.updateProductQuantity);
 router.delete('/delete/:id', productController.deleteProduct);
+router.get('/getPrice/:id', productController.getProductPrice);
 
 module.exports = router;
-

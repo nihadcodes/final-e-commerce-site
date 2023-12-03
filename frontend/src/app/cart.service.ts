@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -21,19 +20,35 @@ export class CartService {
 
   addToCart(productId: string): void {
     try {
-  
       this.productService.getProductQuantity(productId).subscribe(
         (quantityFromDatabase: number) => {
+          if (quantityFromDatabase > 0) {
+            this.productService.getProductPrice(productId).subscribe(
+              (priceFromDatabase: number) => {
+                this.productService.getProductById(productId).subscribe(
+                  (productDetails: any) => {
+                    const currentCart = this.cartSubject.value;
+                    const existingItem = currentCart.find((item) => item.product._id === productId);
   
-          const currentCart = this.cartSubject.value;
-          const existingItem = currentCart.find((item) => item.product._id === productId);
-  
-          if (existingItem) {
-            this.changeQuantity(productId, existingItem.quantity + 1);
+                    if (existingItem) {
+                      this.changeQuantity(productId, existingItem.quantity + 1);
+                    } else {
+                      this.cartSubject.next([...currentCart, { product: { _id: productId, price: priceFromDatabase, ...productDetails }, quantity: 1 }]);
+                    }
+                    this.updateQuantityInDatabase(productId, quantityFromDatabase - 1);
+                  },
+                  (error) => {
+                    console.error('Error fetching product details:', error);
+                  }
+                );
+              },
+              (error) => {
+                console.error('Error fetching product price:', error);
+              }
+            );
           } else {
-            this.cartSubject.next([...currentCart, { product: { _id: productId }, quantity: 1 }]);
+            console.warn('Product quantity is zero. Not adding to cart.');
           }
-          this.updateQuantityInDatabase(productId, quantityFromDatabase - 1);
         },
         (error) => {
           console.error('Error fetching product quantity:', error);
@@ -45,51 +60,35 @@ export class CartService {
   }
   
   
-  removeFromCart(productId: string): void {
-    const currentCart = this.cartSubject.value;
-    const removedItem = currentCart.find((item) => item.product._id === productId);
-
-    if (removedItem) {
-      this.productService.getProductQuantity(productId).subscribe(
-        (quantityFromDatabase: number) => {
-          const newQuantity = Math.max(0, quantityFromDatabase + removedItem.quantity);
-          this.updateQuantityInDatabase(productId, newQuantity);
-
-          const updatedCart = currentCart.filter((item) => item.product._id !== productId);
-          this.cartSubject.next([...updatedCart]);
-        },
-        (error) => {
-          console.error('Error fetching product quantity:', error);
-        }
-      );
-    }
-  }
-
   removeOneItem(productId: string): void {
     try {
-
-    this.productService.getProductQuantity(productId).subscribe(
+      this.productService.getProductQuantity(productId).subscribe(
         (quantityFromDatabase: number) => {
-  
           const currentCart = this.cartSubject.value;
           const existingItem = currentCart.find((item) => item.product._id === productId);
 
-     if (existingItem) {
-   
-            this.changeQuantity(productId, existingItem.quantity - 1);
-          } else {
+          if (existingItem) {
+            const newQuantity = Math.max(0, existingItem.quantity - 1);
 
+            if (newQuantity === 0) {
+              const updatedCart = currentCart.filter((item) => item.product._id !== productId);
+              this.cartSubject.next([...updatedCart]);
+            } else {
+              this.changeQuantity(productId, newQuantity);
+            }
+
+            this.updateQuantityInDatabase(productId, quantityFromDatabase + 1);
+          } else {
             this.cartSubject.next([...currentCart, { product: { _id: productId }, quantity: 1 }]);
+            this.updateQuantityInDatabase(productId, quantityFromDatabase + 1);
           }
-  
-          this.updateQuantityInDatabase(productId, quantityFromDatabase + 1);
         },
         (error) => {
           console.error('Error fetching product quantity:', error);
         }
       );
     } catch (error) {
-      console.error('Error adding to cart:', error);
+      console.error('Error removing one item from cart:', error);
     }
   }
 
@@ -105,9 +104,15 @@ export class CartService {
     this.cartSubject.next([...updatedCart]);
   }
 
+  
+  
 
   getTotalQuantity(): number {
     return this.cartSubject.value.reduce((total, item) => total + item.quantity, 0);
+  }
+
+  getTotalPrice(): number {
+    return this.cartSubject.value.reduce((total, item) => total + item.quantity * item.product.price, 0);
   }
 
   updateQuantityInDatabase(productId: string, quantity: number): void {

@@ -11,7 +11,7 @@ import { ProductService } from '../product.service';
 export class AddProductComponent {
   productForm: FormGroup;
   origins: string[] = ['Local', 'Imported'];
-  categories: string[] = ['Mobile', 'Food', 'Cloths'];
+  categories: string[] = ['Mobile', 'Laptop', 'Desktop'];
 
   constructor(
     private formBuilder: FormBuilder,

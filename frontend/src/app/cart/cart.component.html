@@ -1,42 +1,61 @@
-<div class="cart-container flex justify-center items-center h-screen">
-  <mat-card class="w-full max-w-xl p-8 cart-card">
-    <div class="flex justify-between">
-      
-        <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
+<div class="cart-container flex justify-center items-center mt-10 mb-10">
+  <mat-card class="w-full max-w-xl p-8 cart-card"
+    style="background-color: rgb(255, 255, 255); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <div class="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10">
+      <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
+      <ul class="flex flex-col divide-y">
+        <li *ngFor="let cartItem of cart" class="flex flex-col py-6 sm:flex-row sm:justify-between items-center">
+          <div class="flex w-full space-x-4">
 
-        <div *ngFor="let cartItem of cart" class="cart-item mb-4 p-4 bg-white rounded-md shadow-md">
-          <div class="flex items-center">
-            <div class="mr-4">
-              <h3 class="text-lg font-semibold">{{ cartItem.product.name }}</h3>
-              <p class="text-gray-600">Price: ${{ cartItem.product.price }}</p>
+            <div class="flex flex-col justify-between w-full">
+              <div class="flex justify-between w-full pb-2 space-x-2">
+                <div class="space-y-1">
+                  <h3 class="text-lg font-semibold">{{ cartItem.product.name }}</h3>
+                  <p class="text-sm text-black">${{ cartItem.product.price.toFixed(2) }}</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-lg font-semibold">{{ cartItem.quantity }} x ${{ cartItem.product.price.toFixed(2) }}
+                  </p>
+                  <p class="text-sm line-through dark:text-black"> {{ cartItem.product.previousPrice ? '$' +
+                    cartItem.product.previousPrice.toFixed(2) : '' }}</p>
+                </div>
+              </div>
+              <div class="flex text-sm divide-x">
+                <button type="button" class="flex items-center px-2 py-1 space-x-1 text-black hover:text-red-500"
+                  (click)="removeOneItem(cartItem)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current">
+
+                  </svg>
+                  <span>Remove</span>
+                </button>
+                <button type="button" class="flex items-center px-2 py-1 space-x-1 text-black hover:text-green-500"
+                  (click)="addToCart(cartItem)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 fill-current">
+
+                  </svg>
+                  <span>Add</span>
+                </button>
+              </div>
             </div>
-            <div class="quantity-actions flex items-center">
-              <button mat-icon-button color="primary" (click)="addToCart(cartItem)">
-                <mat-icon>add</mat-icon>
-              </button>
-              <p class="mx-2">{{ cartItem.quantity }}</p>
-              <button mat-icon-button color="primary" (click)="removeOneItem(cartItem)">
-                <mat-icon>remove</mat-icon>
-              </button>
-              
-            </div>
           </div>
-          <div class="mt-2">
-            <button mat-button color="warn" (click)="removeFromCart(cartItem)">Remove All</button>
-          </div>
-        </div>
-
-       
-        <div class="cart-summary bg-white p-4 rounded-md shadow-md">
-          <p class="text-lg font-semibold">Total Quantity: {{ getTotalQuantity() }}</p>
-      
-
-        
-          <div class="card-actions">
-            <button class="btn btn-primary btn-block" >Proceed to Checkout</button>
-          </div>
-        </div>
+        </li>
+      </ul>
+      <div class="space-y-1 text-right">
+        <p class="text-lg font-semibold">Total amount:
+          <span class="font-semibold text-green-500">${{ getTotalPrice().toFixed(2) }}</span>
+        </p>
       </div>
-    
+      <div class="flex justify-end space-x-4 mt-4">
+        <button type="button" class="px-6 py-2 border rounded-md text-black hover:text-red-500">
+          <a routerLink="/dashboard">
+            <span class="sr-only sm:not-sr-only">Back to shop</span>
+            Back
+          </a>
+        </button>
+        <button type="button" class="px-6 py-2 border rounded-md" style="background-color: black; color: white;">
+          <span class="sr-only sm:not-sr-only">Checkout</span>
+        </button>
+      </div>
+    </div>
   </mat-card>
 </div>

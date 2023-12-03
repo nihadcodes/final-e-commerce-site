@@ -127,4 +127,19 @@ exports.updateProductQuantity = async (req, res) => {
   }
 };
 
+exports.getProductPrice = async (req, res) => {
+  const productId = req.params.id;
 
+  try {
+    const product = await Product.findById(productId).select('price').exec();
+
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    res.json(product.price);
+  } catch (err) {
+    console.error('Error fetching product price:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
