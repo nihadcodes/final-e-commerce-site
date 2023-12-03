@@ -1,0 +1,42 @@
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px; 
+    box-sizing: border-box; 
+  }
+
+  .head-container {
+    display: flex;
+  }
+  
+  .title-container {
+    margin-right: auto; 
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; 
+  }
+  
+  .demo-button-container {
+    margin-left: auto; 
+  }
+  
+  .mat-elevation-z8 {
+    width: 100%; 
+    margin-top: 10px; 
+  }
+  
+  .mat-table {
+    width: 100%;
+  }
+
+
+
+  button[mat-raised-button] {
+    margin-right: 10px; 
+  }
+  

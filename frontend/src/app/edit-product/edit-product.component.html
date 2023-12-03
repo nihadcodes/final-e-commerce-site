@@ -1,0 +1,81 @@
+<div class="content-container">
+  <h2 class="title">Edit Product</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form-container" enctype="multipart/form-data">
+
+    <div fxLayout="row wrap" fxLayoutGap="16px" class="form-row">
+      <div fxFlex="50%">
+        <mat-form-field>
+          <label for="name">Name:</label>
+          <input matInput type="text" id="name" formControlName="name" required minlength="3" maxlength="50">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50%">
+        <mat-form-field>
+          <label for="shotCode">Short Code:</label>
+          <input matInput type="text" id="shotCode" formControlName="shotCode" required minlength="3" maxlength="50">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="16px" class="form-row">
+      <div fxFlex="50%">
+        <mat-form-field>
+          <label for="price">Price:</label>
+          <input matInput type="number" id="price" formControlName="price" required>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50%">
+        <mat-form-field>
+          <label for="quantity">Quantity:</label>
+          <input matInput type="number" id="quantity" formControlName="quantity" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="16px" class="form-row">
+      <div fxFlex="50%">
+        <mat-form-field>
+          <label for="origin">Origin:</label>
+          <mat-select formControlName="origin" id="origin" required>
+            <mat-option *ngFor="let origin of origins" [value]="origin">{{ origin }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50%">
+        <mat-form-field>
+          <label for="category">Category:</label>
+          <mat-select formControlName="category" id="category" required>
+            <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="16px" class="form-row">
+
+      <div fxFlex="50%">
+        <mat-form-field>
+          <label for="createdDate">Created Date:</label>
+          <input matInput [matDatepicker]="picker" id="createdDate" formControlName="createdDate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <mat-form-field class="full-width">
+      <label for="description">Description:</label>
+      <textarea matInput id="description" formControlName="description" minlength="3" maxlength="250"></textarea>
+    </mat-form-field>
+
+    <div fxLayout="row wrap" fxLayoutGap="16px" class="form-row">
+      <mat-checkbox formControlName="isBestAchieved">Is Best Achieved</mat-checkbox>
+    </div>
+
+    <button class="full-width" mat-raised-button color="primary" type="submit" [disabled]="!productForm.valid">Update Product</button>
+  </form>
+</div>

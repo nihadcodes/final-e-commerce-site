@@ -1,0 +1,44 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProductService {
+  private apiUrl = 'http://localhost:4000/products';
+
+  constructor(private http: HttpClient) { }
+
+  getProducts(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/get`);
+  }
+
+  addProduct(product: FormData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/add`, product);
+  }
+  
+  updateProduct(id: string, product: FormData): Observable<any> {
+    const url = `${this.apiUrl}/update/${id}`;
+    return this.http.post(url, product); 
+  }
+
+  deleteProduct(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/delete/${id}`);
+  }
+
+  getProductById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get/${id}`);
+  }
+
+  getProductQuantity(id: string): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/getQuantity/${id}`);
+  }
+
+  updateQuantityInDatabase(productId: string, quantity: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/updateProductQuantity/${productId}`, { quantity });
+  }
+  getProductPrice(id: string): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/getPrice/${id}`);
+  }
+}

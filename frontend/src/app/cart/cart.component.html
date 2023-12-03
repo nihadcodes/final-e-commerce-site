@@ -1,0 +1,42 @@
+<div class="cart-container flex justify-center items-center h-screen">
+  <mat-card class="w-full max-w-xl p-8 cart-card">
+    <div class="flex justify-between">
+      
+        <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
+
+        <div *ngFor="let cartItem of cart" class="cart-item mb-4 p-4 bg-white rounded-md shadow-md">
+          <div class="flex items-center">
+            <div class="mr-4">
+              <h3 class="text-lg font-semibold">{{ cartItem.product.name }}</h3>
+              <p class="text-gray-600">Price: ${{ cartItem.product.price }}</p>
+            </div>
+            <div class="quantity-actions flex items-center">
+              <button mat-icon-button color="primary" (click)="addToCart(cartItem)">
+                <mat-icon>add</mat-icon>
+              </button>
+              <p class="mx-2">{{ cartItem.quantity }}</p>
+              <button mat-icon-button color="primary" (click)="removeOneItem(cartItem)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              
+            </div>
+          </div>
+          <div class="mt-2">
+            <button mat-button color="warn" (click)="removeFromCart(cartItem)">Remove All</button>
+          </div>
+        </div>
+
+       
+        <div class="cart-summary bg-white p-4 rounded-md shadow-md">
+          <p class="text-lg font-semibold">Total Quantity: {{ getTotalQuantity() }}</p>
+      
+
+        
+          <div class="card-actions">
+            <button class="btn btn-primary btn-block" >Proceed to Checkout</button>
+          </div>
+        </div>
+      </div>
+    
+  </mat-card>
+</div>

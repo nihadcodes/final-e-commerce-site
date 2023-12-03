@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@800&display=swap');
+
+
+
+
+.container{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+body {
+    margin: 20px; 
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+
+
+

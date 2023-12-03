@@ -1,0 +1,38 @@
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    width: 100%;
+    max-width: 800px;
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px; 
+      margin-bottom: 24px;
+
+      .mat-form-field {
+        flex: 1 1 calc(50% - 8px); 
+        padding: 0.4375em 0;
+        width: 392px 
+      }
+      mat-checkbox {
+        flex: 1 1 100%; 
+      }
+    }
+
+    .full-width {
+      width: 100%; 
+    
+    }
+
+  }
+}
