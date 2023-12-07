@@ -50,7 +50,7 @@ Welcome to E-SHOP, an e-commerce project designed to provide a seamless online s
 2. Navigate to the project directory:
 
     ```bash
-    cd 1st-angular-app
+    cd first-e-commerce-site
     ```
 
 3. Install dependencies for the client:
